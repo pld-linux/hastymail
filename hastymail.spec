@@ -5,7 +5,7 @@ Version:	1.2
 Release:	1
 License:	GPL
 Group:		Applications/Mail
-Source0:	http://dl.sourceforge.net/sourceforge/hastymail/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/hastymail/%{name}-%{version}.tar.gz
 # Source0-md5:	2c6331f1caca1c6bc03cea38358fb723
 Source1:	hastymail.htaccess
 URL:		http://hastymail.sourceforge.net/
