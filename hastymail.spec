@@ -67,9 +67,10 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES TODO README DEVELOPMENT RELEASE.NOTES  hastymail.conf-example
+%doc CHANGES TODO README DEVELOPMENT RELEASE.NOTES hastymail.conf-example
 %dir %{_hastymaildir}
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/%{name}.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
+%dir %{vardir}
 %dir %attr(700,http,http) %{vardir}/settings
 %dir %attr(700,http,http) %{vardir}/settings/attachments
 %{_hastymaildir}/filter
@@ -79,4 +80,4 @@ fi
 %{_hastymaildir}/lang
 %{_hastymaildir}/lib
 %{_hastymaildir}/themes
-%config(noreplace) %verify(not size mtime md5) %{_hastymaildir}/.htaccess
+%config(noreplace) %verify(not md5 mtime size) %{_hastymaildir}/.htaccess
