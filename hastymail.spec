@@ -9,7 +9,7 @@ Source0:	http://dl.sourceforge.net/hastymail/%{name}-%{version}.tar.bz2
 # Source0-md5:	c4450420488429c10b9c69a4555ae5d7
 Source1:	hastymail.htaccess
 URL:		http://hastymail.sourceforge.net/
-# Requires(post):	coreutils
+Requires(post):	textutils
 Requires(post):	perl-base
 Requires(post):	sed
 Requires:	php
@@ -41,7 +41,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_hastymaildir},%{_sysconfdir}/httpd/httpd.conf} \
 	$RPM_BUILD_ROOT%{vardir}/{settings/attachments,include}
 
-cp -a {filter,html,images,index.php,lang,lib,templates,themes} $RPM_BUILD_ROOT%{_hastymaildir}
+cp -a {filter,html,idna,images,index.php,lang,lib,templates,themes} $RPM_BUILD_ROOT%{_hastymaildir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_hastymaildir}/.htaccess
 sed -e "s@/var/hastymail@%{vardir}@" hastymail.conf-example > \
@@ -75,6 +75,7 @@ fi
 %dir %attr(700,http,http) %{vardir}/settings/attachments
 %{_hastymaildir}/filter
 %{_hastymaildir}/html
+%{_hastymaildir}/idna
 %{_hastymaildir}/images
 %{_hastymaildir}/index.php
 %{_hastymaildir}/lang
