@@ -1,15 +1,15 @@
 Summary:	Hastymail - easy-to-use, fast webmail system
 Summary(pl):	Hastymail - ³atwy w u¿yciu, szybki system webmail
 Name:		hastymail
-Version:	1.2
-Release:	1
+Version:	1.4
+Release:	0.1
 License:	GPL
 Group:		Applications/Mail
-Source0:	http://dl.sourceforge.net/hastymail/%{name}-%{version}.tar.gz
-# Source0-md5:	2c6331f1caca1c6bc03cea38358fb723
+Source0:	http://dl.sourceforge.net/hastymail/%{name}-%{version}.tar.bz2
+# Source0-md5:	c4450420488429c10b9c69a4555ae5d7
 Source1:	hastymail.htaccess
 URL:		http://hastymail.sourceforge.net/
-Requires(post):	coreutils
+# Requires(post):	coreutils
 Requires(post):	perl-base
 Requires(post):	sed
 Requires:	php
@@ -41,7 +41,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_hastymaildir},%{_sysconfdir}/httpd/httpd.conf} \
 	$RPM_BUILD_ROOT%{vardir}/{settings/attachments,include}
 
-cp -a {filter,html,images,index.php,lang,lib,themes} $RPM_BUILD_ROOT%{_hastymaildir}
+cp -a {filter,html,images,index.php,lang,lib,templates,themes} $RPM_BUILD_ROOT%{_hastymaildir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_hastymaildir}/.htaccess
 sed -e "s@/var/hastymail@%{vardir}@" hastymail.conf-example > \
@@ -79,5 +79,6 @@ fi
 %{_hastymaildir}/index.php
 %{_hastymaildir}/lang
 %{_hastymaildir}/lib
+%{_hastymaildir}/templates
 %{_hastymaildir}/themes
 %config(noreplace) %verify(not md5 mtime size) %{_hastymaildir}/.htaccess
