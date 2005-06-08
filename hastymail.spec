@@ -51,10 +51,10 @@ sed -e "s@/var/hastymail@%{vardir}@" hastymail.conf-example > \
 rm -rf $RPM_BUILD_ROOT
 
 %post
-SECRET=`dd if=/dev/random bs=10b count=1 | od -a | sed -e 's![^[:alnum:]]!!g'`
+SECRET=`dd if=/dev/random bs=10b count=1 | od -a | xargs | sed -e 's![^[:alnum:]]!!g'`
 if [ -n "$SECRET" ] ; then
 	echo "Updating authentication secret in config files..."
-	perl -pi -e "s/KEY/$SECRET/" %{_hastymaildir}/.htaccess
+	%{__sed} -i 's#\"KEY\"#\"$SECRET\"#g' %{_hastymaildir}/.htaccess
 else
 	echo "Remember to update secret in "
 	echo "    %{_hastymaildir}/.htaccess"
