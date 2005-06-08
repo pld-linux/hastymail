@@ -15,6 +15,7 @@ Requires(post):	sed >= 4.0
 Requires:	php
 Requires:	php-gettext
 Requires:	php-pcre
+Requires:	php-xml
 Requires:	webserver
 Provides:	webmail
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
