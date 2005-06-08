@@ -9,9 +9,9 @@ Source0:	http://dl.sourceforge.net/hastymail/%{name}-%{version}.tar.bz2
 # Source0-md5:	c4450420488429c10b9c69a4555ae5d7
 Source1:	hastymail.htaccess
 URL:		http://hastymail.sourceforge.net/
+Requires(post):	fileutils
 Requires(post):	textutils
-Requires(post):	perl-base
-Requires(post):	sed
+Requires(post):	sed >= 4.0
 Requires:	php
 Requires:	php-gettext
 Requires:	php-pcre
@@ -54,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 SECRET=`dd if=/dev/urandom bs=1 count=42 2>/dev/null | od -a -w42 | cut -c8- | sed -e 's![^[:alnum:]]!!g' | xargs`
 if [ -n "$SECRET" ] ; then
 	echo "Updating authentication secret in config files..."
-	%{__sed} -i 's#\"KEY\"#\"$SECRET\"#g' %{_hastymaildir}/.htaccess
+	sed -i -e 's#\"KEY\"#\"$SECRET\"#g' %{_hastymaildir}/.htaccess
 else
 	echo "Remember to update secret in "
 	echo "    %{_hastymaildir}/.htaccess"
