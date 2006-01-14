@@ -68,7 +68,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES TODO README DEVELOPMENT RELEASE.NOTES hastymail.conf-example
+%doc INSTALL CHANGES TODO README DEVELOPMENT RELEASE.NOTES hastymail.conf-example
 %dir %{_hastymaildir}
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
 %dir %{vardir}
