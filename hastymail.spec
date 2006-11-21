@@ -1,8 +1,10 @@
+# TODO
+# - use webapps
 Summary:	Hastymail - easy-to-use, fast webmail system
 Summary(pl):	Hastymail - ³atwy w u¿yciu, szybki system webmail
 Name:		hastymail
 Version:	1.5
-Release:	0.3
+Release:	1
 License:	GPL
 Group:		Applications/Mail
 Source0:	http://dl.sourceforge.net/hastymail/%{name}-%{version}.tar.bz2
@@ -52,19 +54,17 @@ sed -e "s@/var/hastymail@%{vardir}@" hastymail.conf-example > \
 rm -rf $RPM_BUILD_ROOT
 
 %post
-SECRET=`dd if=/dev/urandom bs=1 count=42 2>/dev/null | od -a -w42 | cut -c8- | sed -e 's![^[:alnum:]]!!g' | xargs`
-if [ -n "$SECRET" ] ; then
-	echo "Updating authentication secret in config files..."
-	sed -i -e 's#\"KEY\"#\"$SECRET\"#g' %{_hastymaildir}/.htaccess
-else
-	echo "Remember to update secret in "
-	echo "    %{_hastymaildir}/.htaccess"
+if [ "$1" = 0 ]; then
+	SECRET=`dd if=/dev/urandom bs=1 count=42 2>/dev/null | od -a -w42 | cut -c8- | sed -e 's![^[:alnum:]]!!g' | xargs`
+	if [ -n "$SECRET" ] ; then
+		echo "Updating authentication secret in config files..."
+		sed -i -e 's#\"KEY\"#\"$SECRET\"#g' %{_hastymaildir}/.htaccess
+	else
+		echo "Remember to update secret in "
+		echo "    %{_hastymaildir}/.htaccess"
+	fi
 fi
-if [ -f /var/lock/subsys/httpd ]; then
-	/etc/rc.d/init.d/httpd restart 1>&2
-else
-	echo "Run \"/etc/rc.d/init.d/httpd start\" to start apache HTTP daemon."
-fi
+%service -q httpd restart
 
 %files
 %defattr(644,root,root,755)
