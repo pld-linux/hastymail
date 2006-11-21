@@ -2,21 +2,21 @@ Summary:	Hastymail - easy-to-use, fast webmail system
 Summary(pl):	Hastymail - ³atwy w u¿yciu, szybki system webmail
 Name:		hastymail
 Version:	1.5
-Release:	0.1
+Release:	0.3
 License:	GPL
 Group:		Applications/Mail
 Source0:	http://dl.sourceforge.net/hastymail/%{name}-%{version}.tar.bz2
 # Source0-md5:	bbff61a6986356ec235cf2310a08d811
-Source1:	hastymail.htaccess
+Source1:	%{name}.htaccess
 URL:		http://hastymail.sourceforge.net/
 Requires(post):	fileutils
-Requires(post):	textutils
 Requires(post):	sed >= 4.0
-Requires:	php
-Requires:	php-gettext
-Requires:	php-pcre
-Requires:	php-xml
+Requires(post):	textutils
+Requires:	php(gettext)
+Requires:	php(pcre)
+Requires:	php(xml)
 Requires:	webserver
+Requires:	webserver(php)
 Provides:	webmail
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
