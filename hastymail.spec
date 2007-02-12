@@ -1,7 +1,7 @@
 # TODO
 # - use webapps
 Summary:	Hastymail - easy-to-use, fast webmail system
-Summary(pl):	Hastymail - ³atwy w u¿yciu, szybki system webmail
+Summary(pl.UTF-8):   Hastymail - Å‚atwy w uÅ¼yciu, szybki system webmail
 Name:		hastymail
 Version:	1.5
 Release:	1
@@ -30,10 +30,10 @@ Hastymail is yet another webmail IMAP client written in PHP. It's
 designed for speed, RFC compatibility and security. Hastymail is
 intended to be the fastest PHP IMAP client around.
 
-%description -l pl
+%description -l pl.UTF-8
 Hastymail to jeszcze jeden webmailowy klient IMAP napisany w PHP.
-Zosta³ zaprojektowany z my¶l± o szybko¶ci, kompatybilno¶ci z RFC i
-bezpieczeñstwie. Hastymail ma byæ najszybszym istniej±cym klientem
+ZostaÅ‚ zaprojektowany z myÅ›lÄ… o szybkoÅ›ci, kompatybilnoÅ›ci z RFC i
+bezpieczeÅ„stwie. Hastymail ma byÄ‡ najszybszym istniejÄ…cym klientem
 IMAP w PHP.
 
 %prep
