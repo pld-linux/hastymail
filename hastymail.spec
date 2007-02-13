@@ -1,7 +1,7 @@
 # TODO
 # - use webapps
 Summary:	Hastymail - easy-to-use, fast webmail system
-Summary(pl.UTF-8):   Hastymail - łatwy w użyciu, szybki system webmail
+Summary(pl.UTF-8):	Hastymail - łatwy w użyciu, szybki system webmail
 Name:		hastymail
 Version:	1.5
 Release:	1
